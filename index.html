@@ -62,6 +62,8 @@
 <body>
   <div id="buttons">
     <div class="button-row">
+      <button class="nav-button" onclick="viewer.setPanorama(panoNew)">Panorama OLD</button>
+      <button class="nav-button" onclick="viewer.setPanorama(panoCurrent)">Panorama 22.08</button>
       <button class="nav-button" onclick="window.open('3102_MP_2024_A4V13C.pdf')">Floor Plan Bathroom (PDF)</button>
       <button class="nav-button" onclick="window.open('3102_MP_2024_A3V9.pdf')">Floor Plan All (PDF)</button>
       <button class="nav-button" onclick="window.open('td1.png')">Floor Plan 1 (PNG)</button>
@@ -75,7 +77,8 @@
   <script src="https://cdn.jsdelivr.net/gh/pchen66/panolens.js@0.10.2/build/panolens.min.js"></script>
 
   <script>
-    const pano = new PANOLENS.ImagePanorama('new.png');
+    const panoCurrent = new PANOLENS.ImagePanorama('the.jpeg'); // Panorama 22.08
+    const panoNew = new PANOLENS.ImagePanorama('new.png');       // Stara panorama
 
     const viewer = new PANOLENS.Viewer({
       container: document.querySelector('#panorama'),
@@ -83,8 +86,10 @@
       autoRotate: false
     });
 
-    viewer.add(pano);
-    viewer.setPanorama(pano); // Start with panorama
+    viewer.add(panoCurrent);
+    viewer.add(panoNew);
+
+    viewer.setPanorama(panoCurrent); // Start with the.jpeg (22.08)
   </script>
 </body>
 </html>
